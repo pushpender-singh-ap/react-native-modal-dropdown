@@ -258,7 +258,7 @@ export default class ModalDropdown extends Component {
       >
         {children || (
           <View style={[styles.button, buttonAndRightComponentContainerStyle]}>
-            <Text style={[styles.buttonText, buttonTextStyle]} numberOfLines={numberOfLines}>
+            <Text allowFontScaling={false} style={[styles.buttonText, buttonTextStyle]} numberOfLines={numberOfLines}>
               {buttonText}
             </Text>
             <RightComponent />
@@ -411,6 +411,7 @@ export default class ModalDropdown extends Component {
         }}
         value={searchValue}
         placeholder={searchPlaceholder}
+        allowFontScaling={false}
       />
     );
   };
@@ -430,7 +431,7 @@ export default class ModalDropdown extends Component {
     return (
       <FlatList
         {...dropdownListProps}
-        getItemLayout={(data, index) => { return {length: 33 + StyleSheet.hairlineWidth, index, offset: (33 + StyleSheet.hairlineWidth) * index} }}
+        getItemLayout={(data, index) => { return { length: 33 + StyleSheet.hairlineWidth, index, offset: (33 + StyleSheet.hairlineWidth) * index } }}
         data={options}
         ref={component => (this.flatList = component)}
         scrollEnabled={scrollEnabled}
@@ -471,7 +472,7 @@ export default class ModalDropdown extends Component {
     const value =
       (renderRowText && renderRowText(item)) || item.toString();
     const row = !renderRow ? (
-      <Text
+      <Text allowFontScaling={false}
         style={[
           styles.rowText,
           dropdownTextStyle,
